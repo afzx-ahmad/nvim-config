@@ -18,10 +18,17 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
 
-            lspconfig.lua_ls.setup({})
-            lspconfig.cssls.setup({})
-            lspconfig.tailwindcss.setup({})
-            lspconfig.eslint.setup({})
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+            lspconfig.lua_ls.setup({
+                capabilities = capabilities
+            })
+            lspconfig.cssls.setup({
+                capabilities = capabilities
+            })
+            lspconfig.tailwindcss.setup({
+                capabilities = capabilities
+            })
 
             vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
         end
